@@ -47,8 +47,13 @@ final class LazyCacheViewController: UITableViewController, UITableViewDataSourc
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 56)
-            .insetBy(dx: 12, dy: 6))
+        // The container must have its final size before the label's
+        // autoresizing mask is applied — resizing from .zero inflates the
+        // label by the full container delta (44pt label became 100pt).
+        let container = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 56))
+        container.backgroundColor = .systemBackground
+
+        let label = UILabel(frame: container.bounds.insetBy(dx: 12, dy: 6))
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 12)
         label.textColor = .secondaryLabel
@@ -56,9 +61,6 @@ final class LazyCacheViewController: UITableViewController, UITableViewDataSourc
             + "Fits search results / unbounded browsing. For a feed you fully "
             + "control, prefer the pipeline pattern (Feed tab)."
         label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
-        let container = UIView()
-        container.backgroundColor = .systemBackground
         container.addSubview(label)
         return container
     }
