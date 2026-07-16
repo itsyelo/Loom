@@ -1,0 +1,8 @@
+// Shared build settings for the LoomExample targets.
+// Personal signing lives in Local.xcconfig (gitignored) — copy
+// Local.xcconfig.template to Local.xcconfig and fill in your team.
+
+CODE_SIGN_STYLE = Automatic
+DEVELOPMENT_TEAM =
+
+#include? "Local.xcconfig"

@@ -1,0 +1,8 @@
+// Personal signing overrides for device builds.
+//
+//   cp Local.xcconfig.template Local.xcconfig
+//
+// Local.xcconfig is gitignored; never commit personal signing info.
+// Find your Team ID at https://developer.apple.com/account (Membership).
+
+DEVELOPMENT_TEAM = YOUR_TEAM_ID
