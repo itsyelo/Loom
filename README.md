@@ -4,6 +4,8 @@ Background-thread layout pre-calculation for iOS, powered by [Yoga](https://gith
 
 Describe layouts with a declarative DSL, calculate frames on a background thread, cache results, and apply them in `layoutSubviews` — eliminating layout computation from the main thread.
 
+Sister library: [LoomText](https://github.com/itsyelo/LoomText) — a CoreText renderer that draws from the same precomputed layout Loom measures with. Typeset once; measurement and rendering share one source of truth.
+
 ## Features
 
 - **Background calculation** — Yoga runs on any thread, zero main-thread layout cost
