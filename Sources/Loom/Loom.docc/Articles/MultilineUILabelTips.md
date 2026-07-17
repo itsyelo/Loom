@@ -169,9 +169,10 @@ bodyLabel.frame = frames.frame(for: .body) ?? .zero
 ## Custom Renderers
 
 If you bind your `Text` node to anything other than `UILabel` —
-**`YYLabel`** (Core Text + async drawing), a SwiftUI `Text`, a custom
-`CTFrameDraw` view, etc. — the locked-line-height convention above is
-not needed. Those renderers don't have UILabel's two-mode internal
+**[`LoomLabel`](https://github.com/itsyelo/LoomText)** (Loom's sister
+renderer), **`YYLabel`** (Core Text + async drawing), a SwiftUI
+`Text`, a custom `CTFrameDraw` view, etc. — the locked-line-height
+convention above is not needed. Those renderers don't have UILabel's two-mode internal
 alignment, so toggling `numberOfLines` produces zero first-line
 jitter without any `paragraphStyle` lock.
 
@@ -229,7 +230,10 @@ the same residual is present in YYText's own `UILabelSizeExample` demo
 when measured with `YYTextLayout` (the gold-standard CoreText
 measurer). Eliminating it entirely requires drawing text yourself
 without going through `UILabel`'s rendering pipeline; that decision
-trade-off is out of scope for a layout framework.
+trade-off is out of scope for a layout framework. It is exactly the
+trade-off [LoomText](https://github.com/itsyelo/LoomText) makes: its
+`LoomLabel` renders the same `LoomTextLayout` it measures with, so the
+toggle residual drops to zero.
 
 ## See Also
 
